@@ -3,6 +3,9 @@
 
 #include <stdlib.h>
 
+/**
+ * structure of the wav_file
+ */
 typedef struct {
     char riff[4];//always same value"RIFF"
     int chunk_size;//Chunk size(file- 8 bytes)
@@ -18,5 +21,5 @@ typedef struct {
     char data[4];//beginning of data section
     int data_size;
 } wav_file;
-wav_file* parse(char* contents);
+wav_file* parse(char* contents);//signature
 #endif//HEADER_FILE_WAV

@@ -6,7 +6,12 @@
 
 
 size_t size;
-
+/**
+ * this method read the file and allocate memory for the file
+ * @param filename
+ * @param buffer
+ * @return size_t of the file
+ */
 size_t read_file( char* filename, char **buffer ){
 
     FILE *fp;
@@ -22,12 +27,19 @@ size_t read_file( char* filename, char **buffer ){
     fclose(fp); // Close the file
     return filelen;
 }
+/**
+ * this method write from specific buffer to a new file
+ * @param filename
+ * @param buffer
+ * @param s
+ * @return
+ */
 size_t write_file( char* filename, char *buffer, size_t s){
     FILE *fp;
     size_t fs;
 
-    fp = fopen(filename,"w");
-    fs = fwrite(buffer,1,s,fp);
+    fp = fopen(filename,"w");//file for the streaming
+    fs = fwrite(buffer,1,s,fp);//write the buffer to the file
     fclose(fp);
     return fs;
 }

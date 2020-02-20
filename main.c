@@ -8,16 +8,11 @@ int main(int argc, char **argv ) {
     wav_file *wav = NULL;
     size_t size;
 
+    //read the file parse it
     size = read_file(argv[1],&buffer);
     wav =  parse(buffer);
-    /**
-     * - File size is 2646044.  Read 2646036 bytes.
-- Format is "fmt " with format data length 16.
-- Format type is WAVEfmt
-- 1 channels with a sample rate of 22050.
-- 44100 byte rate, 2 alignment, 16 bits per sample.
-- Data is "data" and data size is 2646000
-    **/
+
+    //print the information of the file
     printf("File: %s\n",argv[1]);
     puts("-------------------------------------------");
     printf("- File size is: %zu. Read:%d bytes\n",size,wav->chunk_size);
@@ -42,7 +37,7 @@ int main(int argc, char **argv ) {
         newbuf[l+1] = buffer[end];
         end-=2;
     }
-
+    //write the newbuf to a new file in argv[2]
     write_file(argv[2], newbuf, size);
     return 0;
 }

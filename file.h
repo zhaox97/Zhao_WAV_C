@@ -6,6 +6,7 @@
 #define WAV_C_FILE_H
 #include <stdio.h>
 
+//header file(signature)
 size_t read_file( char* filename, char **buffer );
 size_t write_file( char* filename, char *buffer, size_t size);
 
