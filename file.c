@@ -21,7 +21,10 @@ size_t read_file( char* filename, char **buffer ){
     fseek(fp, 0, SEEK_END);          // Jump to the end of the file
     filelen = ftell(fp);             // Get the current byte offset in the file
     rewind(fp);                      // Jump back to the beginning of the file
-
+    //check NULLptr error
+    if(fp == NULL){
+        puts("Invalid file, try another filename please");
+    }
     *buffer =  (char *) malloc(filelen * sizeof(char)); // Enough memory for the file
     size = fread(*buffer, filelen, sizeof(char), fp); // Read in the entire file
     fclose(fp); // Close the file

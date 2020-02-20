@@ -8,9 +8,15 @@ int main(int argc, char **argv ) {
     wav_file *wav = NULL;
     size_t size;
 
-    //read the file parse it
+    //read the file parse it, including check the invalid argument
     size = read_file(argv[1],&buffer);
+    if(argv[1]==NULL){
+        printf("%s","Invalid argument");
+    }
     wav =  parse(buffer);
+    if(wav == NULL){
+        puts("wav may be mull.");
+    }
 
     //print the information of the file
     printf("File: %s\n",argv[1]);
@@ -39,5 +45,7 @@ int main(int argc, char **argv ) {
     }
     //write the newbuf to a new file in argv[2]
     write_file(argv[2], newbuf, size);
+    //free the memory
+    free(buffer);
     return 0;
 }
