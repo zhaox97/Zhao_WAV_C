@@ -9,7 +9,8 @@ int main(int argc, char **argv ) {
     size_t size;
 
     //read the file parse it, including check the invalid argument
-    size = read_file(argv[1],&buffer);
+    size = read_file(argv[1], &buffer);
+
     if(argv[1]==NULL){
         printf("%s","Invalid argument");
     }
@@ -31,14 +32,14 @@ int main(int argc, char **argv ) {
     char newbuf[size];
 
     //copy the first 0-43 bytes from the buffer to the new buffer
-    for(int i = 0; i <= 43; i++){
+    for(long i = 0; i <= 43; i++){
         newbuf[i] = buffer[i];
     }
 
     //reverse the rest and put them to the newbuf
-    int begin = 44;
-    int end = size;
-    for(int l = begin; l <= size; l+=2 ){
+    long begin = 44;
+    long end = size;
+    for(long l = begin; l <= size/2; l+=2 ){
         newbuf[l] = buffer[end-1];
         newbuf[l+1] = buffer[end];
         end-=2;
