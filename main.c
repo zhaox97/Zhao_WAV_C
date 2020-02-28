@@ -29,17 +29,17 @@ int main(int argc, char **argv ) {
     char newbuf[size];
 
     //copy the first 0-43 bytes from the buffer to the new buffer
-    for(long i = 0; i <= 43; i++){
+    for(int i = 0; i <= 43; i++){
         newbuf[i] = buffer[i];
     }
 
     //reverse the rest and put them to the newbuf
-    long begin = 44;
+    int begin = 44;
     long end = size;
-    for(long l = begin; l <= size/2; l+=2 ){
+    for(long l = begin; l <= size; l=l+2 ){
         newbuf[l] = buffer[end-1];
         newbuf[l+1] = buffer[end];
-        end-=2;
+        end=end-2;
     }
     //write the newbuf to a new file in argv[2]
     write_file(argv[2], newbuf, size);
