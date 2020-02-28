@@ -15,9 +15,6 @@ int main(int argc, char **argv ) {
         printf("%s","Invalid argument");
     }
     wav =  parse(buffer);
-    if(wav == NULL){
-        puts("wav may be mull.");
-    }
 
     //print the information of the file
     printf("File: %s\n",argv[1]);
